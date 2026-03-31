@@ -155,7 +155,7 @@ func (tr *quicTransporter) initSession(addr net.Addr, conn net.PacketConn) (*qui
 	if config.SendBps > 0 {
 		congestion.UseBrutal(session, config.SendBps)
 	} else {
-		congestion.UseBBR(session)
+		congestion.UseConfigured(session, tr.config.CongestionType, tr.config.BBRProfile)
 	}
 	return &quicSession{session: session}, nil
 }
@@ -174,6 +174,8 @@ type QUICConfig struct {
 	Key             []byte
 
 	SendBps           uint64
+	CongestionType    string
+	BBRProfile        string
 	ReceiveWindowConn uint64
 	ReceiveWindow     uint64
 	MaxConnClient     int64
@@ -261,12 +263,12 @@ func QUICListener(addr string, config *QUICConfig) (Listener, error) {
 		connChan: make(chan net.Conn, 1024),
 		errChan:  make(chan error, 1),
 	}
-	go l.listenLoop(config.SendBps)
+	go l.listenLoop(config.SendBps, config.CongestionType, config.BBRProfile)
 
 	return l, nil
 }
 
-func (l *quicListener) listenLoop(bps uint64) {
+func (l *quicListener) listenLoop(bps uint64, congestionType, bbrProfile string) {
 	for {
 		session, err := l.ln.Accept(context.Background())
 		if err != nil {
@@ -278,7 +280,7 @@ func (l *quicListener) listenLoop(bps uint64) {
 		if bps > 0 {
 			congestion.UseBrutal(session, bps)
 		} else {
-			congestion.UseBBR(session)
+			congestion.UseConfigured(session, congestionType, bbrProfile)
 		}
 		go l.sessionLoop(session)
 	}

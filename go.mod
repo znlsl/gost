@@ -1,6 +1,6 @@
 module github.com/ginuerzh/gost
 
-go 1.24.0
+go 1.26.0
 
 replace github.com/apernet/hysteria/core/v2 => ./extras/hysteria-core
 
@@ -13,7 +13,7 @@ require (
 	github.com/LiamHaworth/go-tproxy v0.0.0-20190726054950-ef7efd7f24ed
 	github.com/apernet/hysteria/core/v2 v2.0.0-00010101000000-000000000000
 	github.com/apernet/hysteria/extras/v2 v2.0.0-00010101000000-000000000000
-	github.com/apernet/quic-go v0.59.1-0.20260217092621-db4786c77a22
+	github.com/apernet/quic-go v0.59.1-0.20260330051153-c402ee641eb6
 	github.com/asaskevich/govalidator v0.0.0-20230301143203-a9d515a09cc2
 	github.com/go-gost/gosocks4 v0.0.1
 	github.com/go-gost/gosocks5 v0.3.0
@@ -24,22 +24,22 @@ require (
 	github.com/golang/groupcache v0.0.0-20210331224755-41bb18bfe9da
 	github.com/gorilla/websocket v1.5.1
 	github.com/klauspost/compress v1.17.9
-	github.com/lqqyt2423/go-mitmproxy v1.8.5
-	github.com/lunixbochs/struc v0.0.0-20200707160740-784aaebc1d40
+	github.com/lqqyt2423/go-mitmproxy v1.8.10
+	github.com/lunixbochs/struc v0.0.0-20241101090106-8d528fa2c543
 	github.com/mdlayher/vsock v1.2.1
 	github.com/miekg/dns v1.1.59
-	github.com/pufferffish/wireproxy v1.0.9
 	github.com/ryanuber/go-glob v1.0.0
 	github.com/shadowsocks/go-shadowsocks2 v0.1.5
 	github.com/shadowsocks/shadowsocks-go v0.0.0-20200409064450-3e585ff90601
 	github.com/songgao/water v0.0.0-20200317203138-2b4b6d7c09d8
+	github.com/windtf/wireproxy v1.1.2
 	github.com/xtaci/kcp-go/v5 v5.6.7
 	github.com/xtaci/smux v1.5.24
 	github.com/xtaci/tcpraw v1.2.25
 	gitlab.com/yawning/obfs4.git v0.0.0-20220204003609-77af0cba934d
 	golang.org/x/crypto v0.47.0
 	golang.org/x/net v0.49.0
-	golang.zx2c4.com/wireguard v0.0.0-20231211153847-12269c276173
+	golang.zx2c4.com/wireguard v0.0.0-20250521234502-f333402bd9cb
 )
 
 require (
@@ -56,8 +56,7 @@ require (
 	github.com/mdlayher/socket v0.4.1 // indirect
 	github.com/pkg/errors v0.9.1 // indirect
 	github.com/riobard/go-bloom v0.0.0-20200614022211-cdc8013cb5b3 // indirect
-	github.com/sirupsen/logrus v1.8.1 // indirect
-	github.com/sourcegraph/conc v0.3.0 // indirect
+	github.com/sirupsen/logrus v1.9.3 // indirect
 	github.com/templexxx/cpu v0.1.0 // indirect
 	github.com/templexxx/xorsimd v0.4.2 // indirect
 	github.com/things-go/go-socks5 v0.0.5 // indirect
@@ -72,5 +71,5 @@ require (
 	golang.org/x/time v0.12.0 // indirect
 	golang.org/x/tools v0.41.0 // indirect
 	golang.zx2c4.com/wintun v0.0.0-20230126152724-0fa3db229ce2 // indirect
-	gvisor.dev/gvisor v0.0.0-20230927004350-cbd86285d259 // indirect
+	gvisor.dev/gvisor v0.0.0-20250503011706-39ed1f5ac29c // indirect
 )

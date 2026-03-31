@@ -6,16 +6,12 @@ import (
 	"log"
 	"net"
 	"reflect"
-	_ "unsafe"
 
-	"github.com/pufferffish/wireproxy"
+	"github.com/windtf/wireproxy"
 	"golang.zx2c4.com/wireguard/conn"
 	"golang.zx2c4.com/wireguard/device"
 	"golang.zx2c4.com/wireguard/tun/netstack"
 )
-
-//go:linkname createIPCRequest github.com/pufferffish/wireproxy.createIPCRequest
-func createIPCRequest(conf *wireproxy.DeviceConfig) (*wireproxy.DeviceSetting, error)
 
 func NewWireguardTun(confPath string) (*netstack.Net, error) {
 	conf, err := wireproxy.ParseConfig(confPath)
@@ -23,7 +19,7 @@ func NewWireguardTun(confPath string) (*netstack.Net, error) {
 		return nil, err
 	}
 
-	setting, err := createIPCRequest(conf.Device)
+	setting, err := wireproxy.CreateIPCRequest(conf.Device)
 	if err != nil {
 		return nil, err
 	}
