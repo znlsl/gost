@@ -212,9 +212,12 @@ func parseChainNode(ns string) (nodes []gost.Node, err error) {
 			Timeout:     timeout,
 			IdleTimeout: node.GetDuration("idle"),
 
-			SendBps:           uint64(node.GetInt("send_mbps") * gost.MbpsToBps),
-			CongestionType:    node.Get("congestion_type"),
-			BBRProfile:        node.Get("bbr_profile"),
+			CongestionConfig: gost.CongestionConfig{
+				SendBps:                 uint64(node.GetInt("send_mbps") * gost.MbpsToBps),
+				DisableLossCompensation: node.GetBool("disable_loss_compensation"),
+				CongestionType:          node.Get("congestion_type"),
+				BBRProfile:              node.Get("bbr_profile"),
+			},
 			ReceiveWindowConn: uint64(node.GetInt("recv_window_conn")),
 			ReceiveWindow:     uint64(node.GetInt("recv_window")),
 		}
@@ -493,9 +496,12 @@ func (r *route) GenRouters() ([]router, error) {
 				Timeout:     timeout,
 				IdleTimeout: node.GetDuration("idle"),
 
-				SendBps:           uint64(node.GetInt("send_mbps") * gost.MbpsToBps),
-				CongestionType:    node.Get("congestion_type"),
-				BBRProfile:        node.Get("bbr_profile"),
+				CongestionConfig: gost.CongestionConfig{
+					SendBps:                 uint64(node.GetInt("send_mbps") * gost.MbpsToBps),
+					DisableLossCompensation: node.GetBool("disable_loss_compensation"),
+					CongestionType:          node.Get("congestion_type"),
+					BBRProfile:              node.Get("bbr_profile"),
+				},
 				ReceiveWindowConn: uint64(node.GetInt("recv_window_conn")),
 				ReceiveWindow:     uint64(node.GetInt("recv_window")),
 				MaxConnClient:     int64(node.GetInt("max_conn_client")),

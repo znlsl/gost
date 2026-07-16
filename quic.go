@@ -153,7 +153,7 @@ func (tr *quicTransporter) initSession(addr net.Addr, conn net.PacketConn) (*qui
 		return nil, err
 	}
 	if config.SendBps > 0 {
-		congestion.UseBrutal(session, config.SendBps)
+		congestion.UseBrutal(session, config.SendBps, config.DisableLossCompensation)
 	} else {
 		congestion.UseConfigured(session, tr.config.CongestionType, tr.config.BBRProfile)
 	}
@@ -173,12 +173,17 @@ type QUICConfig struct {
 	IdleTimeout     time.Duration
 	Key             []byte
 
-	SendBps           uint64
-	CongestionType    string
-	BBRProfile        string
+	CongestionConfig
 	ReceiveWindowConn uint64
 	ReceiveWindow     uint64
 	MaxConnClient     int64
+}
+
+type CongestionConfig struct {
+	SendBps                 uint64
+	DisableLossCompensation bool
+	CongestionType          string
+	BBRProfile              string
 }
 
 const (
@@ -263,12 +268,12 @@ func QUICListener(addr string, config *QUICConfig) (Listener, error) {
 		connChan: make(chan net.Conn, 1024),
 		errChan:  make(chan error, 1),
 	}
-	go l.listenLoop(config.SendBps, config.CongestionType, config.BBRProfile)
+	go l.listenLoop(config.CongestionConfig)
 
 	return l, nil
 }
 
-func (l *quicListener) listenLoop(bps uint64, congestionType, bbrProfile string) {
+func (l *quicListener) listenLoop(config CongestionConfig) {
 	for {
 		session, err := l.ln.Accept(context.Background())
 		if err != nil {
@@ -277,10 +282,10 @@ func (l *quicListener) listenLoop(bps uint64, congestionType, bbrProfile string)
 			close(l.errChan)
 			return
 		}
-		if bps > 0 {
-			congestion.UseBrutal(session, bps)
+		if config.SendBps > 0 {
+			congestion.UseBrutal(session, config.SendBps, config.DisableLossCompensation)
 		} else {
-			congestion.UseConfigured(session, congestionType, bbrProfile)
+			congestion.UseConfigured(session, config.CongestionType, config.BBRProfile)
 		}
 		go l.sessionLoop(session)
 	}
