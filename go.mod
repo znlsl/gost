@@ -13,7 +13,7 @@ require (
 	github.com/LiamHaworth/go-tproxy v0.0.0-20190726054950-ef7efd7f24ed
 	github.com/apernet/hysteria/core/v2 v2.0.0-00010101000000-000000000000
 	github.com/apernet/hysteria/extras/v2 v2.0.0-00010101000000-000000000000
-	github.com/apernet/quic-go v0.60.1-0.20260618182935-599b15a1fa26
+	github.com/apernet/quic-go v0.61.1-0.20260801011216-0ad2f221c8d7
 	github.com/asaskevich/govalidator v0.0.0-20230301143203-a9d515a09cc2
 	github.com/go-gost/gosocks4 v0.0.1
 	github.com/go-gost/gosocks5 v0.3.0
@@ -27,7 +27,7 @@ require (
 	github.com/lqqyt2423/go-mitmproxy v1.9.2
 	github.com/lunixbochs/struc v0.0.0-20241101090106-8d528fa2c543
 	github.com/mdlayher/vsock v1.2.1
-	github.com/miekg/dns v1.1.59
+	github.com/miekg/dns v1.1.72
 	github.com/ryanuber/go-glob v1.0.0
 	github.com/shadowsocks/go-shadowsocks2 v0.1.5
 	github.com/shadowsocks/shadowsocks-go v0.0.0-20200409064450-3e585ff90601
@@ -46,6 +46,7 @@ require (
 	filippo.io/edwards25519 v1.0.0-rc.1.0.20210721174708-390f27c3be20 // indirect
 	github.com/MakeNowJust/heredoc/v2 v2.0.1 // indirect
 	github.com/aead/chacha20 v0.0.0-20180709150244-8b13a72661da // indirect
+	github.com/andybalholm/brotli v1.2.1 // indirect
 	github.com/coreos/go-iptables v0.6.0 // indirect
 	github.com/dchest/siphash v1.2.2 // indirect
 	github.com/go-ini/ini v1.67.0 // indirect
@@ -55,6 +56,7 @@ require (
 	github.com/klauspost/reedsolomon v1.12.0 // indirect
 	github.com/mdlayher/socket v0.4.1 // indirect
 	github.com/pkg/errors v0.9.1 // indirect
+	github.com/refraction-networking/utls v1.8.2 // indirect
 	github.com/riobard/go-bloom v0.0.0-20200614022211-cdc8013cb5b3 // indirect
 	github.com/sirupsen/logrus v1.9.4 // indirect
 	github.com/templexxx/cpu v0.1.0 // indirect
@@ -68,7 +70,7 @@ require (
 	golang.org/x/sync v0.22.0 // indirect
 	golang.org/x/sys v0.47.0 // indirect
 	golang.org/x/text v0.40.0 // indirect
-	golang.org/x/time v0.12.0 // indirect
+	golang.org/x/time v0.15.0 // indirect
 	golang.org/x/tools v0.47.0 // indirect
 	golang.zx2c4.com/wintun v0.0.0-20230126152724-0fa3db229ce2 // indirect
 	gvisor.dev/gvisor v0.0.0-20250503011706-39ed1f5ac29c // indirect

@@ -22,6 +22,7 @@ Fork说明
 * 使用Apernet魔改的[quic-go](https://github.com/apernet/quic-go)加快QUIC传输速度
 * 其他参数
   * `send_mbps`: 数据发送速率，等于0则使用BBR或reno，大于0则使用Brutal
+  * `disable_loss_compensation`: 用于关闭 Brutal 的速率补偿机制，可以在一些情况下提升稳定性
   * `congestion_type`: `send_mbps`为0时使用的拥塞算法，可选值为`bbr`(默认)和`reno`
   * `bbr_profile`: 拥塞算法为BBR时的参数，可选值为`conservative`、`standard`(默认)和`aggressive`
   * `recv_window_conn`: 流接收窗口大小
