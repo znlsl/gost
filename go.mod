@@ -1,6 +1,6 @@
 module github.com/ginuerzh/gost
 
-go 1.26.0
+go 1.27
 
 replace github.com/apernet/hysteria/core/v2 => ./extras/hysteria-core
 
@@ -13,7 +13,7 @@ require (
 	github.com/LiamHaworth/go-tproxy v0.0.0-20190726054950-ef7efd7f24ed
 	github.com/apernet/hysteria/core/v2 v2.0.0-00010101000000-000000000000
 	github.com/apernet/hysteria/extras/v2 v2.0.0-00010101000000-000000000000
-	github.com/apernet/quic-go v0.61.1-0.20260801011216-0ad2f221c8d7
+	github.com/apernet/quic-go v0.61.1-0.20260806010916-184d081eef3e
 	github.com/asaskevich/govalidator v0.0.0-20230301143203-a9d515a09cc2
 	github.com/go-gost/gosocks4 v0.0.1
 	github.com/go-gost/gosocks5 v0.3.0
@@ -38,7 +38,7 @@ require (
 	github.com/xtaci/tcpraw v1.2.25
 	gitlab.com/yawning/obfs4.git v0.0.0-20220204003609-77af0cba934d
 	golang.org/x/crypto v0.54.0
-	golang.org/x/net v0.56.0
+	golang.org/x/net v0.57.0
 	golang.zx2c4.com/wireguard v0.0.0-20250521234502-f333402bd9cb
 )
 
